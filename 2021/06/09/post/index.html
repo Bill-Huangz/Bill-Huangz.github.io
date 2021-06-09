@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="https://i.imgur.com/mzFepvY.jpg">
-  <title>Hello World</title>
+  <title>Codeforce 1536A-Omkar and Bad Story</title>
   
     
       <meta 
         property="og:title" 
-        content="Hello World">
+        content="Codeforce 1536A-Omkar and Bad Story">
     
     
       <meta 
         property="og:url" 
-        content="https://bill-huangz.github.io/2021/06/09/hello-world/index.html">
+        content="https://bill-huangz.github.io/2021/06/09/post/index.html">
     
     
       <meta 
@@ -265,11 +265,11 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      Hello World
+      Codeforce 1536A-Omkar and Bad Story
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2021-06-08T16:32:47.188Z">
+    <time datetime="2021-06-09T05:30:18.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
@@ -279,7 +279,7 @@
     
     
       <span class="dot"></span>
-      <span>75 words</span>
+      <span>497 words</span>
     
   </div>
   
@@ -287,19 +287,10 @@
   <div 
     id="section" 
     class="post-content">
-    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="highlight"><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="highlight"><code class="hljs bash">$ hexo server<br></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="highlight"><code class="hljs bash">$ hexo generate<br></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="highlight"><code class="hljs bash">$ hexo deploy<br></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <h1 id="Codeforce-1536A-Omkar-and-Bad-Story"><a href="#Codeforce-1536A-Omkar-and-Bad-Story" class="headerlink" title="Codeforce 1536A-Omkar and Bad Story"></a>Codeforce 1536A-Omkar and Bad Story</h1><p>題目連結:<a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1536/A">https://codeforces.com/problemset/problem/1536/A</a><br>題目大意:給定一個有$n$個元素的數列 &lt;$A$&gt;，求構造出一個數列 &lt;$B$&gt; 使得:<br>(1) $B$ 的 $size\leq300$<br>(2) $A$ 裡的元素至少都要在 $B$ 出現一次<br>(3) 對於所有的 $b_i,b_j$ ， $|b_i-b_j|$至少在 $B$ 出現一次<br>$-100 \leq A_i\leq100$</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>如果 $A$ 裡面的某個元素為負數，那麼我們絕對不可能構造出數列&lt;$B$&gt;，因為加絕對值後的數必為<strong>非負整數</strong>。<br>確定了&lt;$A$&gt;的元素都為非負整數後，那麼接著輸出 $0$ ~ $100$ 就好了，理由如下:<br>(1) 因為 $A$ 的最大可能值為 $100$，故 $0$ ~ $100$ 必可以包含 $A$ 的元素至少一次<br>(2) 假設 $b_i&lt;b_j$ ，那麼 $b_i\leq |b_i-b_j|\leq b_j$，而 $A$ 的最大值為 $100$ ，最小值為 $0$，所以 $B=[0,1,2,…,100]$必定可以包含所有的$|b_i-b_j|$</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><pre class="highlight"><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> menhera_chan_is_mine ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> pb push_back</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> pi pair<span class="hljs-meta-string">&lt;int, int&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BE(i) i.begin(),i.end()</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> fi first</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> se second</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> INF 2147483647</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> mkp make_pair</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ist insert</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> mod 1000000009</span><br><span class="hljs-comment">//#pragma GCC optimize(&quot;Ofast,unroll-loops,no-stack-protector,fast-math&quot;)</span><br><span class="hljs-comment">//#pragma GCC optimize(&quot;O2&quot;)</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>&#123;<span class="hljs-keyword">return</span> a &lt; b ? a : b;&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>&#123;<span class="hljs-keyword">return</span> a &gt; b ? a : b;&#125;<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isprime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span></span>&#123;<span class="hljs-keyword">bool</span> is=<span class="hljs-number">1</span> ; <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span> ; i*i &lt;= k ; i++ ) <span class="hljs-keyword">if</span> ( k % i == <span class="hljs-number">0</span> ) is = <span class="hljs-number">0</span> ; <span class="hljs-keyword">return</span> k&gt;<span class="hljs-number">1</span>?is:<span class="hljs-number">0</span>;&#125;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> PI=<span class="hljs-built_in">acos</span>(<span class="hljs-number">-1</span>);<br><span class="hljs-keyword">int</span> n;<br><span class="hljs-keyword">int</span> a[<span class="hljs-number">105</span>];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sol</span><span class="hljs-params">()</span></span>&#123;<br>    cin &gt;&gt;n;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++) cin &gt;&gt;a[i];<br>    <span class="hljs-keyword">bool</span> flg=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        <span class="hljs-keyword">if</span> (a[i]&lt;<span class="hljs-number">0</span>) flg=<span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (flg) cout &lt;&lt;<span class="hljs-string">&quot;NO\n&quot;</span>;<br>    <span class="hljs-keyword">else</span> &#123;<br>        cout &lt;&lt;<span class="hljs-string">&quot;YES\n101\n&quot;</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=<span class="hljs-number">100</span>;i++)<br>            cout &lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>        cout &lt;&lt;<span class="hljs-string">&quot;\n&quot;</span>;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    menhera_chan_is_mine<br>    <span class="hljs-keyword">int</span> _=<span class="hljs-number">1</span>;<br>    cin &gt;&gt;_;<br>    <span class="hljs-keyword">while</span> (_--) <span class="hljs-built_in">sol</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre>
+<p>時間複雜度:$O(n)$</p>
 
   </div>
   <div>
@@ -319,8 +310,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://bill-huangz.github.io/2021/06/09/hello-world/">
-            https://bill-huangz.github.io/2021/06/09/hello-world/
+            href="https://bill-huangz.github.io/2021/06/09/post/">
+            https://bill-huangz.github.io/2021/06/09/post/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本網站所有文章除特別聲明外，均採用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 協議</a>。轉載請註明出處！</p>
@@ -330,20 +321,20 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
+  
+    <div class="nav-item-next">
       <a 
-        href="/2021/06/09/post/" 
+        href="/2021/06/09/hello-world/" 
         class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
         <div>
-          <div class="nav-label">Prev</div>
+          <div class="nav-label">Next</div>
           
-            <div class="nav-title">Codeforce 1536A-Omkar and Bad Story </div>
+            <div class="nav-title">Hello World </div>
           
         </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
       </a>
     </div>
-  
   
 </div>
 
@@ -356,7 +347,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Codeforce-1536A-Omkar-and-Bad-Story"><span class="toc-text">Codeforce 1536A-Omkar and Bad Story</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-text">Code</span></a></li></ol></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -402,7 +393,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Codeforce-1536A-Omkar-and-Bad-Story"><span class="toc-text">Codeforce 1536A-Omkar and Bad Story</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-text">Code</span></a></li></ol></li></ol>
       </div>
     </article>
   
@@ -449,7 +440,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Codeforce-1536A-Omkar-and-Bad-Story"><span class="toc-text">Codeforce 1536A-Omkar and Bad Story</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-text">Code</span></a></li></ol></li></ol>
     </article>
   
   
