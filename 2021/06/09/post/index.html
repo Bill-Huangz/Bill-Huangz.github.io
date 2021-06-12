@@ -345,7 +345,7 @@
   <div>
     
       <div 
-        class="post-note note-warning copyright" 
+        class="post-note note-info copyright" 
         style="margin-top: 42px">
         <p>
           <span style="font-weight: bold;">作者：</span><a 
@@ -624,6 +624,19 @@
     
     
     
+      <div class="footer-dsc">
+        
+          如果點一次賺za-warudo一秒，那世界已經za-warudo了<span id="busuanzi_value_site_pv"></span>秒
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          如果拜訪1次鯊鯊A一次，那鯊鯊已經A了<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
 </footer> 
     
   <a 
@@ -713,6 +726,10 @@
      
      
     <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
      
     
       <script>
@@ -733,6 +750,10 @@
       </script>
      
     
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
     
   </body>
 </html>
