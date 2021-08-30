@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="https://i.imgur.com/mzFepvY.jpg">
-  <title>Codeforce 1539D-PriceFixed</title>
+  <title>TRML思考賽-1</title>
   
     
       <meta 
         property="og:title" 
-        content="Codeforce 1539D-PriceFixed">
+        content="TRML思考賽-1">
     
     
       <meta 
         property="og:url" 
-        content="https://bill-huangz.github.io/2021/06/22/1539D/index.html">
+        content="https://bill-huangz.github.io/2021/08/23/TRML%E6%80%9D%E8%80%83%E8%B3%BD-1/index.html">
     
     
       <meta 
@@ -46,10 +46,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2021-06-22">
+        content="2021-08-23">
       <meta 
         property="og:article:modified_time" 
-        content="2021-06-30">
+        content="2021-08-31">
       <meta 
         property="og:article:author" 
         content="Bill-Hunagz">
@@ -57,15 +57,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="CF">
-        
-          <meta 
-            property="og:article:tag" 
-            content="algorithm">
-        
-          <meta 
-            property="og:article:tag" 
-            content="C++">
+            content="TRML">
         
       
     
@@ -277,21 +269,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      Codeforce 1539D-PriceFixed
+      TRML思考賽-1
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2021-06-22T06:07:36.000Z">
+    <time datetime="2021-08-23T02:43:49.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2021-06-22</span>
+      <span>2021-08-23</span>
     </time>
     
     
       <span class="dot"></span>
-      <span>567 words</span>
+      <span>1.2k words</span>
     
   </div>
   
@@ -306,27 +298,9 @@
         
           
           <a 
-            href="/tags/CF/" 
+            href="/tags/TRML/" 
             class="post-meta-link">
-            CF
-          </a>
-        
-          
-            <span class="dot"></span>
-          
-          <a 
-            href="/tags/algorithm/" 
-            class="post-meta-link">
-            algorithm
-          </a>
-        
-          
-            <span class="dot"></span>
-          
-          <a 
-            href="/tags/C/" 
-            class="post-meta-link">
-            C++
+            TRML
           </a>
         
       </div>
@@ -336,12 +310,35 @@
   <div 
     id="section" 
     class="post-content">
-    <h1 id="Codeforce-1539D-PriceFixed"><a href="#Codeforce-1539D-PriceFixed" class="headerlink" title="Codeforce 1539D-PriceFixed"></a>Codeforce 1539D-PriceFixed</h1><p>題目連結: <a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1539/D">https://codeforces.com/problemset/problem/1539/D</a><br>題目大意:<br>一間商店裡，有$n$種商品，Lena 想買各$a_i$個，一次買一個，每個商品都是$2$元。<br>如果你在買第$i$種商品之前已經買了$b_i$<strong>個</strong>商品，那麼該商品只需花費$1$元。<br>請問: Lena最少需花多少錢才能買齊。</p>
-<h2 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h2><p>$Sample$ $Input$<br><pre class="highlight"><code class="hljs plaintext">3<br>3 4<br>1 3<br>1 5<br></code></pre><br>$Sample$ $Output$ </p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><pre class="highlight"><code class="hljs plaintext">8<br></code></pre></h2><p>$Sample$ $Input$<br><pre class="highlight"><code class="hljs plaintext">5<br>2 7<br>2 8<br>1 2<br>2 4<br>1 8<br></code></pre><br>$Sample$ $Output$<br><pre class="highlight"><code class="hljs plaintext">12<br></code></pre></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>考慮兩種商品 $X,Y$，且有$b_X&lt;b_Y$，如果我們想要買到優惠，顯然我們比較容易達到 $X$ 的量(即 $b_X$ )，所以我們可以將每種商品 $i$ 先依 $b_i$ 排序，接著利用雙指針，假設現在已經買了 $tot$ 個商品，而商品 $i$ 需要 $b_i-tot$ 個才能有優惠，那麼我們就從後面買 $b_i-tot$個商品，重複執行直到全部買完。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><pre class="highlight"><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> pi pair<span class="hljs-meta-string">&lt;int, int&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> fi first</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> se second</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SpeedUP ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">int</span> n;<br>pi a[<span class="hljs-number">100005</span>];<br><span class="hljs-comment">// first 表 要買的個數(a) second 表 優惠需求的量(b)</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sol</span><span class="hljs-params">()</span></span>&#123;<br>    cin &gt;&gt;n;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++) cin &gt;&gt;a[i].fi&gt;&gt;a[i].se;<br>    <span class="hljs-built_in">sort</span>(a,a+n,[](pi lh,pi rh)&#123;<br>        <span class="hljs-keyword">return</span> lh.se&lt;rh.se; <span class="hljs-comment">// 依照 b_i 排序</span><br>    &#125;);<br>    <span class="hljs-keyword">int</span> r=n<span class="hljs-number">-1</span>,tot=<span class="hljs-number">0</span>,ans=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        <span class="hljs-keyword">if</span> (i==r) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 當 i=r 時，直接跳出 之後處理</span><br>        <span class="hljs-keyword">if</span> (tot&gt;=a[i].se)&#123;<br>            ans+=a[i].fi;<br>            tot+=a[i].fi;<br>            a[i].fi=<span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">while</span> (r&gt;i&amp;&amp;a[i].se-tot-a[r].fi&gt;=<span class="hljs-number">0</span>)&#123;<br>                tot+=a[r].fi;<br>                ans+=<span class="hljs-number">2</span>*a[r].fi;<br>                r--;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (i==r) <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">int</span> k=a[i].se-tot;<br>            ans+=<span class="hljs-number">2</span>*k;<br>            a[r].fi-=k;<br>            tot+=k;<br>            ans+=a[i].fi;<br>            tot+=a[i].fi;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 處理 i==r 時</span><br>    <span class="hljs-keyword">if</span> (tot&gt;=a[r].se) &#123;<br>        cout &lt;&lt;ans+a[r].fi;<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tot&lt;a[r].se&amp;&amp;tot+a[r].fi&gt;=a[r].se)&#123;<br>        cout &lt;&lt;ans+(a[r].se-tot)*<span class="hljs-number">2</span>+(a[r].fi-(a[r].se-tot));<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        cout &lt;&lt;ans+a[r].fi*<span class="hljs-number">2</span>;<br>    &#125;<br><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    SpeedUP <br>    <span class="hljs-keyword">int</span> tEst=<span class="hljs-number">1</span>;<br>    <span class="hljs-comment">//cin &gt;&gt;tEst;</span><br>    <span class="hljs-keyword">while</span> (tEst--) <span class="hljs-built_in">sol</span>();<br>   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre>
-<p>時間複雜度: $O(nlogn+n)$，排序+計算。<br>這題想法不難，可是我實作太弱qwq，卡了很久才找到bug，<font color="#00dd00">AC</font> code也很醜。</p>
+    <h1 id="2021-TRML-思考賽-第一題組"><a href="#2021-TRML-思考賽-第一題組" class="headerlink" title="2021 TRML 思考賽 第一題組"></a>2021 TRML 思考賽 第一題組</h1><p>題目:<br>從一個 $n\times n$ 的方格紙的左下角，沿著格線依最短路徑走到右上角。<br>定義 $N(n,k)$ 表示為在行徑過程中轉彎了 $k$ 次的方法數。<br>例如:<br>當 $n=2$，$k=1$時，$N(2,1)=2$ 如 (圖1)<br>當 $n=2$，$k=2$時，$N(2,2)=2$ 如 (圖2)<br>當 $n=2$，$k=3$時，$N(2,3)=2$ 如 (圖3)<br><img src="https://i.imgur.com/LqPBhex.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.imgur.com/LqPBhex.png" class="lozad post-image"><br><img src="https://i.imgur.com/lpQ9VRh.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.imgur.com/lpQ9VRh.png" class="lozad post-image"><br><img src="https://i.imgur.com/8fRZjxi.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.imgur.com/8fRZjxi.png" class="lozad post-image"><br>中間可以暴力窮舉的題目這邊不多說明，直接講推一般式的(5)(6)</p>
+<h2 id="5-試求當-k-為偶數時，-N-n-k-的一般式-以-n-與-k-表示"><a href="#5-試求當-k-為偶數時，-N-n-k-的一般式-以-n-與-k-表示" class="headerlink" title="(5)試求當 $k$ 為偶數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)"></a>(5)試求當 $k$ 為偶數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)</h2><div class="post-note note-info"><p>注意 這裡的 $k$ 為偶數，在這裡偶數很重要</p></div>
+<p>因為是走最短路徑，所以水平方向的總路徑長與垂直方向的總路徑長皆為 $n$。<br>而每轉一次彎，行徑方向都會改變一次(以下以 $H$ 表示水平方向、$V$ 表示鉛直方向)<br>所以會形成 $ H<em>1,V_1,H_2,V_2,…,V</em>{\frac{k}{2}-1},H<em>{\frac{k}{2}},V</em>{\frac{k}{2}},H_{\frac{k}{2}+1} $ 的序列。<br>其中 $ H_i,1\leq i\leq \frac{k}{2}+1$ 與 $V_j,1\leq j\leq \frac{k}{2} $ 分別代表每個水平線段與鉛直線段的長度。<br>因此可以列出兩條式子:</p>
+<script type="math/tex; mode=display">
+\begin{cases} H_1+H_2+H_3+...+H_{\frac{k}{2}}+H_{\frac{k}{2}+1}=n\\
+ V_1+V_2+V_3+...+V_{\frac{k}{2}-1}+V_{\frac{k}{2}}=n
+\end{cases}</script><p>令 $H_i’$、$V_j’$ 使得 $H_i=H_i’+1$，$V_j’=V_j+1$，則式子可改寫成如下:</p>
+<script type="math/tex; mode=display">
+\begin{cases} H_1'+H_2'+H_3'+...+H_{\frac{k}{2}}'+H_{\frac{k}{2}+1}'=n-(\frac{k}{2}+1)\\
+ V_1'+V_2'+V_3'+...+V_{\frac{k}{2}-1}'+V_{\frac{k}{2}}'=n-\frac{k}{2}
+\end{cases}</script><p>熟悉<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%B5%84%E5%90%88#%E9%87%8D%E8%A4%87%E7%B5%84%E5%90%88%E7%90%86%E8%AB%96%E8%88%87%E5%85%AC%E5%BC%8F">重複組合(combination with repetition)</a>的人，應該很熟悉這種題目。<br>可以秒解出水平線段的組合方法有 $C{n-1 \choose \frac{k}{2}}$種，鉛直方向有 $C{n-1 \choose \frac{k}{2}-1}$種。<br>所以當 $k$ 為偶數時 $N(n,k)=C{n-1 \choose \frac{k}{2}}\times C{n-1 \choose \frac{k}{2}-1}\times 2$。<br>$\times 2$的原因是因為一開始可選擇水平或鉛直2種情況。</p>
+<p>不熟悉重複組合的人<del>去學重複組合</del>，換個方向思考一下。<br>嘗試看看這道題目:<br><div class="post-note note-warning"><p>滿足 $x+y+z+w=6$的非負整數解有幾組?</p></div><br>素養化一下題目敘述:<br><div class="post-note note-warning"><p>現有4個編號分別為 $x,y,z,w$ 的桶子以及6顆相同的球，請問將這6顆球放進這4個桶子的方法數有幾種?</p></div><br>考慮有3根相同的隔板，劃分出4個空間，每個空間分別代表一個桶子，而該空間內球的數量就是桶子內球的數量。<br>所以總方法數就是將3根相同的棍子以及6顆相同的球的排列分法數。<br>所以答案為 $\frac{(6+3)!}{6!3!}=C{9 \choose 3}=84$。</p>
+<p>回到思考賽的題目，因為 $H_i$ 必須要大於 $0$。所以我們將 $H_i$ 變成 $H_i’+1$後，變向成去解了 $H_i’$ 的非負整數解。<br>對 $V_j$ 同理。<br>接著就按照上面的想法就好啦。</p>
+<p>對於 $H_i$，考慮有 $\frac{k}{2}$個隔板，$n-(\frac{k}{2}+1)$顆球。</p>
+<p>所以方法數為 $\frac{(n-(\frac{k}{2}+1)+\frac{k}{2})!}{(n-(\frac{k}{2}+1))!\frac{k}{2}!}=\frac{(n-1)!}{(n-(\frac{k}{2}+1))!\frac{k}{2}!}=C{(n-1) \choose \frac{k}{2}}$</p>
+<p>對於 $V_j$，考慮有 $\frac{k}{2}-1$個隔板，$n-\frac{k}{2}$顆球。</p>
+<p>所以方法數為 $\frac{(n-\frac{k}{2}+\frac{k}{2}-1)!}{(n-\frac{k}{2})!(\frac{k}{2}-1)!}=\frac{(n-1)!}{(n-\frac{k}{2})!(\frac{k}{2}-1)!}=C{(n-1) \choose \frac{k}{2}-1}$</p>
+<p>所以 $N(n,k)=C{n-1 \choose \frac{k}{2}}\times C{n-1 \choose \frac{k}{2}-1}\times 2$。<br>$\times 2$的原因一樣是因為一開始可選擇水平或鉛直2種情況。</p>
+<h2 id="6-試求當-k-為奇數時，-N-n-k-的一般式-以-n-與-k-表示"><a href="#6-試求當-k-為奇數時，-N-n-k-的一般式-以-n-與-k-表示" class="headerlink" title="(6)試求當 $k$ 為奇數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)"></a>(6)試求當 $k$ 為奇數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)</h2><div class="post-note note-info"><p>注意 這裡的 $k$ 為奇數，在這裡奇數很重要<br>可是偶數比較難</p></div>
+<p>這題就比較簡單了，因為 $k$ 為奇數，所以你的序列會長成這樣:<br>$H<em>1,V_1,H_2,V_2,…,H</em>{\frac{k-1}{2}},V<em>{\frac{k-1}{2}},H</em>{\frac{k+1}{2}},V_{\frac{k+1}{2}}$</p>
+<p>可列出式子:</p>
+<script type="math/tex; mode=display">
+\begin{cases} H_1+H_2+H_3+...+H_{\frac{k-1}{2}}+H_{\frac{k+1}{2}}=n\\
+ V_1+V_2+V_3+...+V_{\frac{k-1}{2}}+V_{\frac{k+1}{2}}=n
+\end{cases}</script><p>一樣令 $H_i’$、$V_j’$ 使得 $H_i=H_i’+1$，$V_j’=V_j+1$，改寫式子如下:</p>
+<script type="math/tex; mode=display">
+\begin{cases} H_1'+H_2'+H_3'+...+H_{\frac{k-1}{2}}'+H_{\frac{k+1}{2}}'=n-\frac{k+1}{2}\\
+ V_1'+V_2'+V_3'+...+V_{\frac{k-1}{2}}'+V_{\frac{k+1}{2}}'=n-\frac{k+1}{2}
+\end{cases}</script><p>所以當 $k$ 為奇數時 $N(n,k)=C{ n-1 \choose \frac{k-1}{2}}^2 \times 2$<br>$\times 2$一樣是因為一開始可選擇水平或鉛直2種情況。<br><div class="post-note note-success"><p>最後提醒: 當 $k\geq2n$ 時，$N(n,k)=0$喔</p></div></p>
 
   </div>
   <div>
@@ -361,8 +358,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://bill-huangz.github.io/2021/06/22/1539D/">
-            https://bill-huangz.github.io/2021/06/22/1539D/
+            href="https://bill-huangz.github.io/2021/08/23/TRML%E6%80%9D%E8%80%83%E8%B3%BD-1/">
+            https://bill-huangz.github.io/2021/08/23/TRML%E6%80%9D%E8%80%83%E8%B3%BD-1/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本網站所有文章除特別聲明外，均採用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 協議</a>。轉載請註明出處！</p>
@@ -372,29 +369,15 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
-      <a 
-        href="/2021/06/30/LuoguP1799/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">Prev</div>
-          
-            <div class="nav-title">Luogu-P1799 數列 </div>
-          
-        </div>
-      </a>
-    </div>
-  
   
     <div class="nav-item-next">
       <a 
-        href="/2021/06/12/50v-s-99/" 
+        href="/2021/06/30/LuoguP1799/" 
         class="nav-link">
         <div>
           <div class="nav-label">Next</div>
           
-            <div class="nav-title">Which number is larger? </div>
+            <div class="nav-title">Luogu-P1799 數列 </div>
           
         </div>
         <i class="iconfont icon-right nav-next-icon"></i>
@@ -412,8 +395,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Codeforce-1539D-PriceFixed"><span class="toc-text">Codeforce 1539D-PriceFixed</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sample"><span class="toc-text">Sample</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">8
-</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-text">Code</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-TRML-%E6%80%9D%E8%80%83%E8%B3%BD-%E7%AC%AC%E4%B8%80%E9%A1%8C%E7%B5%84"><span class="toc-text">2021 TRML 思考賽 第一題組</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%A9%A6%E6%B1%82%E7%95%B6-k-%E7%82%BA%E5%81%B6%E6%95%B8%E6%99%82%EF%BC%8C-N-n-k-%E7%9A%84%E4%B8%80%E8%88%AC%E5%BC%8F-%E4%BB%A5-n-%E8%88%87-k-%E8%A1%A8%E7%A4%BA"><span class="toc-text">(5)試求當 $k$ 為偶數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%A9%A6%E6%B1%82%E7%95%B6-k-%E7%82%BA%E5%A5%87%E6%95%B8%E6%99%82%EF%BC%8C-N-n-k-%E7%9A%84%E4%B8%80%E8%88%AC%E5%BC%8F-%E4%BB%A5-n-%E8%88%87-k-%E8%A1%A8%E7%A4%BA"><span class="toc-text">(6)試求當 $k$ 為奇數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)</span></a></li></ol></li></ol>
 </div></main>
             <aside class="left-column">
               
@@ -469,8 +451,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Codeforce-1539D-PriceFixed"><span class="toc-text">Codeforce 1539D-PriceFixed</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sample"><span class="toc-text">Sample</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">8
-</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-text">Code</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-TRML-%E6%80%9D%E8%80%83%E8%B3%BD-%E7%AC%AC%E4%B8%80%E9%A1%8C%E7%B5%84"><span class="toc-text">2021 TRML 思考賽 第一題組</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%A9%A6%E6%B1%82%E7%95%B6-k-%E7%82%BA%E5%81%B6%E6%95%B8%E6%99%82%EF%BC%8C-N-n-k-%E7%9A%84%E4%B8%80%E8%88%AC%E5%BC%8F-%E4%BB%A5-n-%E8%88%87-k-%E8%A1%A8%E7%A4%BA"><span class="toc-text">(5)試求當 $k$ 為偶數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%A9%A6%E6%B1%82%E7%95%B6-k-%E7%82%BA%E5%A5%87%E6%95%B8%E6%99%82%EF%BC%8C-N-n-k-%E7%9A%84%E4%B8%80%E8%88%AC%E5%BC%8F-%E4%BB%A5-n-%E8%88%87-k-%E8%A1%A8%E7%A4%BA"><span class="toc-text">(6)試求當 $k$ 為奇數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)</span></a></li></ol></li></ol>
       </div>
     </article>
   
@@ -559,8 +540,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Codeforce-1539D-PriceFixed"><span class="toc-text">Codeforce 1539D-PriceFixed</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sample"><span class="toc-text">Sample</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">8
-</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-text">Code</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-TRML-%E6%80%9D%E8%80%83%E8%B3%BD-%E7%AC%AC%E4%B8%80%E9%A1%8C%E7%B5%84"><span class="toc-text">2021 TRML 思考賽 第一題組</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%A9%A6%E6%B1%82%E7%95%B6-k-%E7%82%BA%E5%81%B6%E6%95%B8%E6%99%82%EF%BC%8C-N-n-k-%E7%9A%84%E4%B8%80%E8%88%AC%E5%BC%8F-%E4%BB%A5-n-%E8%88%87-k-%E8%A1%A8%E7%A4%BA"><span class="toc-text">(5)試求當 $k$ 為偶數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%A9%A6%E6%B1%82%E7%95%B6-k-%E7%82%BA%E5%A5%87%E6%95%B8%E6%99%82%EF%BC%8C-N-n-k-%E7%9A%84%E4%B8%80%E8%88%AC%E5%BC%8F-%E4%BB%A5-n-%E8%88%87-k-%E8%A1%A8%E7%A4%BA"><span class="toc-text">(6)試求當 $k$ 為奇數時，$N(n,k)$的一般式(以 $n$ 與 $k$ 表示)</span></a></li></ol></li></ol>
     </article>
   
   
