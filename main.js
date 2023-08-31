@@ -324,7 +324,7 @@ function checkPlayerLevelDown() {
     } else if (playerLevel >= 60 ) {
       playerLevel -= 5;
     }
-    playerLevel = Math.maz(0, playerLevel);
+    playerLevel = Math.max(0, playerLevel);
 }
 
 function resetGame(isPlayerWin) {
