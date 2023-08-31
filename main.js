@@ -310,6 +310,21 @@ function checkPlayerLevelUp() {
   } else if (levelDifference > 20) {
     playerLevel += 1;
   }
+  playerLevel = Math.min(100, playerLevel);
+}
+
+function checkPlayerLevelDown() {
+    // 計算玩家等級差距
+    const levelDifference = playerLevel - npcLevel;
+  
+    //alert(levelDifference);
+    // 根據等級差距提升玩家等級
+    if (playerLevel >= 80) {
+      playerLevel -= 10;
+    } else if (playerLevel >= 60 ) {
+      playerLevel -= 5;
+    }
+    playerLevel = Math.maz(0, playerLevel);
 }
 
 function resetGame(isPlayerWin) {
