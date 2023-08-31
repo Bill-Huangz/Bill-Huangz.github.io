@@ -331,7 +331,12 @@ function resetGame(isPlayerWin) {
   if (!isPlayerWin) {
     // NPC獲勝，重設雙方血量
     updateStats();
-    checkPlayerLevelDown();
+    if (playerLevel >= 80) {
+        playerLevel -= 10;
+      } else if (playerLevel >= 60 ) {
+        playerLevel -= 5;
+      }
+      playerLevel = Math.max(0, playerLevel);
     playerHp = playerLevel * playerHpGap + playerHpBase;
     npcHp = npcLevel * npcHpGap + npcHpBase;
   } else {
